@@ -34,12 +34,12 @@ public class DetectorDeNúmeros {
             System.out.print("Digite un número entero: ");
             num = leer.nextInt();
             if(num==0){
-                cn=cn+1;
+                cneu=cneu+1;
             }else{
                 if(num>0){
                     cp=cp+1;
                 }else{
-                    cneu=cneu+1;
+                    cn=cn+1;
                 }
             }
             x=x+1;
