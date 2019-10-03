@@ -1,0 +1,37 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package problema1_promediopeso;
+
+import java.util.Scanner;
+
+/**
+ *
+ * @author gfrieri
+ */
+public class Problema1_PromedioPeso {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        System.out.println("Promedio de pesos en base a la edad");
+        System.out.println("");
+        
+        int ed, n, x;
+        float peso, prom;
+        Scanner leer = new Scanner(System.in);
+        
+        System.out.println("Bienvenido al promedio de pesos");
+        System.out.println("");
+        System.out.println("Porfavor ingrese la cantidad de personas cuyo peso desea hallar el promedio");
+        n = leer.nextInt();
+        
+        while(){
+            
+        }
+    }
+    
+}
