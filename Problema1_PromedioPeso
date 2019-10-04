@@ -21,7 +21,8 @@ public class Problema1_PromedioPeso {
         System.out.println("");
         
         int ed, n, x, ni, jo, ad, vi, cn, cj, ca, cv;
-        float peso, prom;
+        float peso, prom1, prom2, prom3, prom4;
+        x=1; cn=0; cj=0; ca=0; cv=0;
         Scanner leer = new Scanner(System.in);
         
         System.out.println("Bienvenido al promedio de pesos");
@@ -55,6 +56,9 @@ public class Problema1_PromedioPeso {
                         
         }
     }
-    
-    
+    prom1=ni/cn; prom2=jo/cj; prom3=ad/ca; prom4=vi/cv;
+    System.out.println("El promedio de peso de los niños es: "+prom1);
+    System.out.println("El promedio de peso de los jóvenes es: "+prom2);
+    System.out.println("El promedio de peso de los adultos es: "+prom3);
+    System.out.println("El promedio de peso de los viejos es: "+prom4);
 }
