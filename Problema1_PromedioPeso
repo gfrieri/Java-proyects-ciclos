@@ -20,7 +20,7 @@ public class Problema1_PromedioPeso {
         System.out.println("Promedio de pesos en base a la edad");
         System.out.println("");
         
-        int ed, n, x;
+        int ed, n, x, ni, jo, ad, vi, cn, cj, ca, cv;
         float peso, prom;
         Scanner leer = new Scanner(System.in);
         
@@ -29,9 +29,32 @@ public class Problema1_PromedioPeso {
         System.out.println("Porfavor ingrese la cantidad de personas cuyo peso desea hallar el promedio");
         n = leer.nextInt();
         
-        while(){
+        while(x<=n){
+            System.out.print("Ingrese la edad de la persona: ");
+            ed = leer.nextInt();
+            System.out.print("Ingrese el peso de la persona: ");
+            peso = leer.nextFloat;
             
+            if(ed>=0&&ed<=12){
+                ni=ni+peso;
+                cn=cn+1;
+            }else{
+                if(ed>=13&&ed<=29){
+                    jo=jo+peso;
+                    cj=cj+1;
+                }else{
+                    if(ed>=30&&ed<=59){
+                        ad=ad+peso;
+                        ca=ca+1;
+                    }else{
+                        if(ed>=60{
+                            vi=vi+peso;
+                            cv=cv+1;
+                        }
+                        x=x+1;
+                        
         }
     }
+    
     
 }
