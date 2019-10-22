@@ -1,11 +1,18 @@
 /*
 Diseñar un menú iterativo con las siguientes opciones:
-1.	Cantidad de cifras de un número: Dado un número, informar cuantos dígitos tiene. 
-2.	Factorial de un número: Dado un número, calcular su factorial. 
+1.	Cantidad de cifras de un número: Dado un número, informar cuantos dígitos tiene. ""Adicionar: cuántos dígitos son pares.""
+
+2.	Factorial de un número: Dado un número, calcular su factorial. ""Adicionar: si el número es primo o no.""
+
 3.	Adivina que número estoy pensando: El programa debe generar aleatoriamente un número entre 0 y 99 
         y el usuario debe adivinarlo siguiendo las pistas del programa. Las pistas que se deben dar es 
-        si el número que va dando el usuario es mayor o menor que el generado, así hasta que lo adivine. 
-4.	Salir
+        si el número que va dando el usuario es mayor o menor que el generado, así hasta que lo adivine.
+        ""Adicionar: Debe mostrar la cantidad de intentos que tuvo para adivinar el número.
+        Adicionar que máximo 5 intentos para adivinar, sino adivina debe mostrar el número e informarle que PERDIOOOOOOO.""
+      
+4.      ""Adicionar: De los ejercicios realizados para practicar para el parcial, escoger uno y traducir como opción 4.""
+        
+5.	Salir
 */
 package menu_iterativo;
 
