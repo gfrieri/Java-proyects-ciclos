@@ -1,9 +1,7 @@
 /*
 Diseñar un menú iterativo con las siguientes opciones:
 1.	Cantidad de cifras de un número: Dado un número, informar cuantos dígitos tiene. ""Adicionar: cuántos dígitos son pares.""
-
 2.	Factorial de un número: Dado un número, calcular su factorial. ""Adicionar: si el número es primo o no.""
-
 3.	Adivina que número estoy pensando: El programa debe generar aleatoriamente un número entre 0 y 99 
         y el usuario debe adivinarlo siguiendo las pistas del programa. Las pistas que se deben dar es 
         si el número que va dando el usuario es mayor o menor que el generado, así hasta que lo adivine.
@@ -28,7 +26,7 @@ public class MenuIterativo_gfrieri {
     public static void main(String[] args) {
         long num, num1, dig;
         int op, cp;
-        double c, p, ca, num2;
+        double c;
         Scanner leer = new Scanner(System.in);
         Random rr = new Random();
         do {
@@ -66,91 +64,69 @@ public class MenuIterativo_gfrieri {
                         }
                         num = num / 10;
                     }
-                    
                     System.out.println("\n--------------------------------------------------------------------------");
                     System.out.println("||El número " + num1 + " tiene " + c + " cifras y "+ cp +" dígitos pares||");
                     System.out.println("--------------------------------------------------------------------------");
                     break;
                     
                 case 2:
-                    System.out.print("Digite el número:");
-                    num2 = leer.nextLong();
+                    System.out.print("Digite el número: ");
+                    num = leer.nextLong();
                     c = 1;
-                    p = 2;
-                        for (int i = 1; i <= num2; i++) {
+                    cp = 2;
+                        for (int i = 1; i <= num; i++) {
                         c = c * i;
                     }
-                    if(num2==1 || num2==0){
+                        do{
+                          num1=num%cp;
+                          cp=cp+1;
+                          c=c+1;
+                        }while(num1!=0);
+                    if(num==1 || num==0){
                         System.out.println("\n*********************************************");
-                        System.out.println("El factorial de " + num2 + " es " + c + " y no es primo ni compuesto");
+                        System.out.println("El factorial de " + num + " es " + c + " y " + num + " no es primo ni compuesto");
                         System.out.println("*********************************************");  
                     }else{
-                        for(int o=2; o<=num2; o++){
-                            ca = num2/o;
-                        }
-                        
-                        
-                        do{
-                        ca = num2/p;
-                        p = p+1;
-                    }while(p <= num2 && ca!=0);
-                        
-                        
-                        
-                        if(o==num2){
-                            System.out.println("\n*********************************************");
-                            System.out.println("El factorial de " + num2 + " es " + c + " y es primo");
-                            System.out.println("*********************************************"); 
+                        if(c==num){
+                        System.out.println("\n*********************************************");
+                        System.out.println("El factorial de " + num + " es " + c + " y " + num + " es primo");
+                        System.out.println("*********************************************");
                         }else{
-                            System.out.println("\n*********************************************");
-                            System.out.println("El factorial de " + num2 + " es " + c + " y no es primo");
-                            System.out.println("*********************************************"); 
+                        System.out.println("\n*********************************************");
+                        System.out.println("El factorial de " + num + " es " + c + " y "+ num +" no es primo");
+                        System.out.println("*********************************************");
                         }
                     }
 
                     break;
                 case 3:
                     num = rr.nextInt(100);
+                    cp=0;
+                    dig=5;
                     do {
-                    System.out.println("Adivina el número:");
+                    System.out.print("\nAdivina el número: ");
                     num1 = leer.nextLong();
+                        dig=dig-1;
                         if (num1 > num) {
-                            System.out.println("Menor");
+                            System.out.println("\nFallaste, el número es menor");
+                            System.out.println("Tus intentos restantes son " +dig);
                         } else {
                             if (num1 < num) {
-                                System.out.println("Mayor");
+                                System.out.println("\nFallaste, el número es mayor");
+                                System.out.println("Tus intentos restantes son " +dig);
                             }
                         }
-                    } while (num != num1);
-                    System.out.println("Adivinasteeeeeeee");
+                        cp=cp+1;
+                    } while (num != num1 && cp<5);
+                    if(num1==num){
+                        System.out.println("\nCorrecto, el número es " +num+ ", adivinaste en " +cp+ " de 5 intentos");
+                    }else{
+                        System.out.println("\nNo adivinaste en tus 5 intentos \nEl número era " +num+ ", más suerte la próxima");
+                    }
+                    break;
+                    
+                case 4:
                     break;
             }
         } while (op < 5);
         System.out.println("GRACIAS Y ADIOSSSSSSS!!!!!");
-    }
-    
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
