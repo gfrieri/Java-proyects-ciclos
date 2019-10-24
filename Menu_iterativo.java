@@ -1,20 +1,4 @@
-/*
-Diseñar un menú iterativo con las siguientes opciones:
-1.	Cantidad de cifras de un número: Dado un número, informar cuantos dígitos tiene. ""Adicionar: cuántos dígitos son pares.""
-
-2.	Factorial de un número: Dado un número, calcular su factorial. ""Adicionar: si el número es primo o no.""
-
-3.	Adivina que número estoy pensando: El programa debe generar aleatoriamente un número entre 0 y 99 
-        y el usuario debe adivinarlo siguiendo las pistas del programa. Las pistas que se deben dar es 
-        si el número que va dando el usuario es mayor o menor que el generado, así hasta que lo adivine.
-        ""Adicionar: Debe mostrar la cantidad de intentos que tuvo para adivinar el número.
-        Adicionar que máximo 5 intentos para adivinar, sino adivina debe mostrar el número e informarle que PERDIOOOOOOO.""
-      
-4.      ""Adicionar: De los ejercicios realizados para practicar para el parcial, escoger uno y traducir como opción 4.""
-        
-5.	Salir
-*/
-package menu_iterativo;
+package menuiterativo_gfrieri;
 
 import java.util.Random;
 import java.util.Scanner;
@@ -23,74 +7,138 @@ import java.util.Scanner;
  *
  * @author rramos
  */
-public class Menu_iterativo {
+public class MenuIterativo_gfrieri {
 
     public static void main(String[] args) {
-        long num, num1;
-        int op, c;
+        long num, num1, dig, x;
+        int op, cp;
+        double c;
         Scanner leer = new Scanner(System.in);
         Random rr = new Random();
+        System.out.println("\nBienvenido a nuestro menú iterativo\n\n¿Qué desea el día de hoy?");
         do {
-            System.out.println("\n************** Menú ***************");
-            System.out.println("1. Cantidad de dígitos de un número");
-            System.out.println("2. Factorial de un número");
-            System.out.println("3. Adivina el número");
-            System.out.println("4. Salir");
-            System.out.println("***********************************");
-            System.out.print("\nDigite opción:");
+            System.out.println("\n**************************** Menú **************************");
+            System.out.println("* 1. Cantidad de dígitos de un número y cuantos son pares  *");
+            System.out.println("* 2. Factorial de un número y si es primo o no             *");
+            System.out.println("* 3. Adivina el número en 5 intentos o menos               *");
+            System.out.println("* 4. Invierte el signo de los números que quieras          *");
+            System.out.println("* 5. Salir                                                 *");
+            System.out.println("************************************************************");
+            System.out.print("\nDigite una opción: ");
             op = leer.nextInt();
-            while (op < 1 || op > 4) {
-                System.out.println("********************");
+            while (op < 1 || op > 5) {
+                System.out.println("\n********************");
                 System.out.println("*  Opción inválida *");
                 System.out.println("********************");
-                System.out.print("Digite nuevamente opción:");
+                System.out.print("\nDigite nuevamente una opción: ");
                 op = leer.nextInt();
             } 
             switch (op) {
                 case 1:
-                    System.out.println("\n***********************************");
-                    System.out.println("**      CANTIDAD DE DÍGITOS      **");
-                    System.out.print("**Digite número:");
+                    System.out.println("\n-------------------------------------------------------------------");
+                    System.out.println("||      CANTIDAD DE DÍGITOS DE UN NÚMERO Y CUANTOS SON PARES     ||");
+                    System.out.println("-------------------------------------------------------------------");
+                    System.out.print("\nDigite el número entero cuyos dígitos y cuantos de estos son pares desea conocer: ");
                     num = leer.nextLong();
                     c = 0;
+                    cp = 0;
                     num1 = num;
                     while (num != 0) {
                         c = c + 1;
+                        dig = num%10;
+                        if(dig%2==0){
+                            cp = cp+1;
+                        }
                         num = num / 10;
                     }
-                    
-                    System.out.println("**El número " + num1 + " tiene " + c + " cifras    **");
-                    System.out.println("***********************************");
+                    System.out.println("\n|| El número " + num1 + " tiene " + c + " dígitos y "+ cp +" son pares || ");
                     break;
+                    
                 case 2:
-                    System.out.print("Digite el número:");
+                    System.out.println("\n---------------------------------------------------------");
+                    System.out.println("||      FACTORIAL DE UN NÚMERO Y SI ES PRIMO O NO      ||");
+                    System.out.println("---------------------------------------------------------");
+                    System.out.print("\nDigite el número cuyo factorial y si es primo o no desea conocer: ");
                     num = leer.nextLong();
                     c = 1;
-                    for (int i = 1; i <= num; i++) {
-                        c = c * i;
+                    dig = 1;
+                    cp = 2;
+                    x = num;
+                    if(num!=1 && num!=0){
+                        if(num<0){
+                            num = num * -1;
+                            }
+                        for (int i = 1; i <= num; i++) {
+                                c = c * i;
+                        }
+                        do{
+                            num1=num%cp;
+                            cp=cp+1;
+                            dig=dig+1;
+                        }while(num1!=0);
+                        
+                    if(dig==num){
+                        System.out.println("\n|| El factorial de " + x + " es " + c + " y " + x + " es primo ||");
+                    }else{
+                            System.out.println("\n|| El factorial de " + x + " es " + c + " y "+ x +" no es primo ||");    
                     }
-                    System.out.println("*********************************************");
-                    System.out.println("El factorial de " + num + " es " + c);
-                    System.out.println("*********************************************");
+                    }else{
+                        if(num==1 || num==0){
+                            System.out.println("\n|| El factorial de " + x + " es " + c + " y "+ x +" no es primo ni compuesto ||");
+                        }
+                    }
                     break;
+                    
                 case 3:
+                    System.out.println("\n-------------------------------------------------------");
+                    System.out.println("||      ADIVINA EL NÚMERO EN 5 INTENTOS O MENOS      ||");
+                    System.out.println("-------------------------------------------------------");
                     num = rr.nextInt(100);
+                    cp=0;
+                    dig=5;
                     do {
-                    System.out.println("Adivina el número:");
+                    System.out.print("\nAdivina el número entre 0 y 99\n(intentos restantes: "+dig+"): ");
                     num1 = leer.nextLong();
+                        dig=dig-1;
                         if (num1 > num) {
-                            System.out.println("Menor");
+                            System.out.println("\nFallaste, el número es menor");
+
                         } else {
                             if (num1 < num) {
-                                System.out.println("Mayor");
+                                System.out.println("\nFallaste, el número es mayor");
+
                             }
                         }
-                    } while (num != num1);
-                    System.out.println("Adivinasteeeeeeee");
+                        cp=cp+1;
+                    } while (num != num1 && cp<5);
+                    if(num1==num){
+                        System.out.println("\n|| Correcto, el número es " +num+ ". Adivinaste en " +cp+ " de 5 intentos ||");
+                    }else{
+                        System.out.println("\n|| No adivinaste en tus 5 intentos, el número era " +num+" ||"+"\n\nMás suerte la próxima...");
+                    }
+                    break;
+                    
+                case 4:
+                    System.out.println("\n------------------------------------------------------------");
+                    System.out.println("||      INVIERTE EL SIGNO DE LOS NÚMEROS QUE QUIERAS      ||");
+                    System.out.println("------------------------------------------------------------");
+                    System.out.print("\n¿A cuántos números enteros deseas invertirle su signo?: ");
+                    num = leer.nextLong();
+                    for(int i = 1; i <= num; i++){
+                        System.out.print("\nIngresa el número cuyo signo deseas invertir: ");
+                        num1 = leer.nextLong();
+                        if(num1==0){
+                            System.out.println("|| "+num1+"No tiene signos invertibles ya que no es ni positivo ni negativo ||");
+                        }else{
+                           num1=num1*-1;
+                           System.out.println("|| El número ahora es "+num1+" ||"); 
+                        }
+                    }
+                    System.out.println("\n|| Ya se han invertido todos los números indicados ||");
                     break;
             }
-        } while (op < 4);
-        System.out.println("GRACIAS Y ADIOSSSSSSS!!!!!");
+        } while (op < 5);
+        System.out.println("\n\nMuchas gracias por utilizar nuestros servicios\n\nLe deseamos lo mejor, vuelva pronto\n");
     }
     
 }
