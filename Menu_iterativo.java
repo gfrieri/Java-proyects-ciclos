@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 /**
  *
- * @author rramos
+ * @author rramos & gfrieri
  */
 public class MenuIterativo_gfrieri {
 
