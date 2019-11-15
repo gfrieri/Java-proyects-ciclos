@@ -1,0 +1,99 @@
+package punto3final;
+
+import javax.swing.JOptionPane;
+
+/**
+ *
+ * @author gfrieri
+ */
+public class Punto3Final {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        int tutal;
+        double n1, d, f, x, sen = 0, cos = 0, c, sw = 1, tan, sec, csc, cot;
+        String nombre, menu2;
+        
+        JOptionPane.showMessageDialog(null, "¡Bienvenido a Funciones trigonométricas con series de Taylor!");
+        tutal = JOptionPane.showConfirmDialog(null, "¿Quieres abrir el tutorial?", "Funciones trigonométricas", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+        if (tutal == JOptionPane.YES_OPTION) {
+            JOptionPane.showMessageDialog(null, "Funcionamiento:\n"
+                    + "1. El usuario ingresa un número.\n"
+                    + "2. El programa se encargara de utilizar las series de Taylor para hallar seno y el coseno de dicho número.\n"
+                    + "3. Despues de cada sumatoria se le preguntará al usuario si desea seguir hasta que encuentre el valor deseado.\n"
+                    + "4. Una vez hallados el seno y el coseno del número el usuario podra indicarle al programa que halle las demas funciones trigonométricas.\n\n"
+                    + "Tip: Recomendamos detener la sumatoria cuando los cambios en el resultado no sean visibles.");
+        }
+        nombre = JOptionPane.showInputDialog("Escribe tu nombre");
+        x = Integer.parseInt(JOptionPane.showInputDialog(nombre + " ingresa el número cuya función trigonométrica deseas hallar:"));
+
+        for (int n = 0; n <= sw; n++) {
+            n1 = 1;
+            c = 1;
+            f = 1;
+            for (int a = 1; a <= n; a++) {
+                n1 = n1 * -1;
+            }
+            d = (2 * n) + 1;
+            for (int a = 1; a <= d; a++) {
+                f = f * a;
+            }
+            for (int a = 1; a <= d; a++) {
+                c = x * c;
+            }
+            sen = ((n1 / f) * c) + sen;
+            tutal = JOptionPane.showConfirmDialog(null, "El valor actual de la sumatoria es: "+sen+"\n¿Deseas continuar con la sumatoria para hallar seno de " + x + "?", "Funciones trigonométricas", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+            if (tutal == JOptionPane.YES_OPTION) {
+                sw = sw + 1;
+            } else {
+                n = n + 2;
+            }
+
+        }
+        sw = 1;
+        for (int n = 0; n <= sw; n++) {
+            n1 = 1;
+            c = 1;
+            f = 1;
+            for (int a = 1; a <= n; a++) {
+                n1 = n1 * -1;
+            }
+            d = 2 * n;
+            for (int a = 1; a <= d; a++) {
+                f = f * a;
+            }
+            for (int a = 1; a <= d; a++) {
+                c = x * c;
+            }
+            cos = ((n1 / f) * c) + cos;
+            tutal = JOptionPane.showConfirmDialog(null, "El valor actual de la sumatoria es: "+cos+"\n¿Deseas continuar con la sumatoria para hallar coseno de " + x + "?", "Funciones trigonométricas", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+            if (tutal == JOptionPane.YES_OPTION) {
+                sw = sw + 1;
+            } else {
+                n = n + 2;
+            }
+        }
+
+        tan = sen / cos;
+        sec = 1 / cos;
+        csc = 1 / sen;
+        cot = cos / sen;
+
+        String[] op = {"Tangente", "Secante", "Cosecante", "Cotangente"};
+        menu2 = (String) JOptionPane.showInputDialog(null, "¿Qué función deseas hallar?", "Funciones trigonométricas", JOptionPane.QUESTION_MESSAGE, null, op, null);
+        if (menu2.toString().equalsIgnoreCase("Tangente")) {
+            JOptionPane.showMessageDialog(null, "La tangente de " + x + " es igual a " + tan);
+        }
+        if (menu2.toString().equalsIgnoreCase("Secante")) {
+            JOptionPane.showMessageDialog(null, "La secante de " + x + " es igual a " + sec);
+        }
+        if (menu2.toString().equalsIgnoreCase("Cosecante")) {
+            JOptionPane.showMessageDialog(null, "La cosecante de " + x + " es igual a " + csc);
+        }
+        if (menu2.toString().equalsIgnoreCase("Cotangente")) {
+            JOptionPane.showMessageDialog(null, "La cottangente de " + x + " es igual a " + cot);
+        }
+    }
+}
