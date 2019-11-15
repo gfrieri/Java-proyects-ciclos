@@ -1,0 +1,84 @@
+package punto2.pkgfinal;
+
+import javax.swing.JOptionPane;
+
+/**
+ *
+ * @author gfrieri
+ */
+public class Punto2Final {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        int n, n1, n2, d1, d2, d3, d4, p, f, i = 1, d21, d22, d23, d24;
+        String nombre1, nombre2;
+        JOptionPane.showMessageDialog(null, "¡Bienvenidos a punto y fama!");
+        JOptionPane.showMessageDialog(null, "Las reglas son simples:\n"
+                + "1. El jugador 1 debe ingresar un número de cuatro cifras sin dígitos repetidos.\n"
+                + "2. El jugador 2 debe adivinar dicho número.\n"
+                + "3. Cada dígito acertado y en la misma posición que en el número ingresado por el jugador 1 es una fama para el jugador 2.\n"
+                + "4. Cada dígito acertado pero en una posición distinta en el número ingresado por el jugador 1 es un punto para el jugador 2.\n\n"
+                + "Tip: El jugador 2 debe tener en cuenta los puntos y famas de cada intento, ya que estos indican que tan cerca esta de adivinar el número.");
+        JOptionPane.showMessageDialog(null, "¡Diviertanse!");
+        nombre1 = JOptionPane.showInputDialog("Escribe tu nombre jugador 1");
+        nombre2 = JOptionPane.showInputDialog("Escribe tu nombre jugador 2");
+        n = Integer.parseInt(JOptionPane.showInputDialog(nombre1 + " digita un número de cuatro cifras y sin digitos repetidos:"));
+        n1 = 0;
+        while (n1 != 1) {
+            d1 = n / 1000;
+            d2 = n % 1000 / 100;
+            d3 = n % 100 / 10;
+            d4 = n % 10;
+            if (n / 1000 > 9 || n / 1000 < 1 || d1 == d2 || d1 == d3 || d1 == d4 || d2 == d3 || d2 == d4 || d3 == d4) {
+                JOptionPane.showMessageDialog(null, "El número ingresado es invalido");
+                n = Integer.parseInt(JOptionPane.showInputDialog(nombre1 + " digita un número de cuatro cifras y sin digitos repetidos:"));
+            } else {
+                n1 = 1;
+            }
+        }
+        d1 = n / 1000;
+        d2 = n % 1000 / 100;
+        d3 = n % 100 / 10;
+        d4 = n % 10;
+        n2 = Integer.parseInt(JOptionPane.showInputDialog(nombre2 + " intenta adivinar el número de cuatro cifras que digitó " + nombre1 + ":"));
+        while (n2 != n) {
+            p = 0;
+            f = 0;
+            d21 = n2 / 1000;
+            d22 = n2 % 1000 / 100;
+            d23 = n2 % 100 / 10;
+            d24 = n2 % 10;
+            if (d1 == d21) {
+                f = f + 1;
+            }
+            if (d2 == d22) {
+                f = f + 1;
+            }
+            if (d3 == d23) {
+                f = f + 1;
+            }
+            if (d4 == d24) {
+                f = f + 1;
+            }
+            if (d21 != d1 && d21 == d2 || d21 == d3 || d21 == d4) {
+                p = p + 1;
+            }
+            if (d22 != d2 && d22 == d1 || d22 == d3 || d22 == d4) {
+                p = p + 1;
+            }
+            if (d23 != d3 && d23 == d1 || d23 == d2 || d23 == d4) {
+                p = p + 1;
+            }
+            if (d24 != d4 && d24 == d1 || d24 == d2 || d24 == d3) {
+                p = p + 1;
+            }
+            i = i + 1;
+            JOptionPane.showMessageDialog(null, "Incorrecto " + nombre2 + ", ese no es el número que digitó " + nombre1 + "\n Obtuviste " + p + " puntos y " + f + " famas");
+            n2 = Integer.parseInt(JOptionPane.showInputDialog(nombre2 + " intenta adivinar el número de cuatro cifras que digitó " + nombre1 + ":"));
+        }
+        JOptionPane.showMessageDialog(null, "Felicidades " + nombre2 + ", adivinaste el número en " + i + " intentos :D");
+    }
+
+}
